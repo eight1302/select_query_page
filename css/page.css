@@ -1,0 +1,76 @@
+/*定义滑块 内阴影+圆角*/  
+.page-list::-webkit-scrollbar-thumb  
+{  
+    border-radius: 10px;  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
+    background-color: #2b7eb7;  
+}  
+.page-list input {
+    border:1px solid #d5dade; 
+    text-align:center; 
+    width:62px; 
+    box-shadow:none;
+}
+.page-list li{ 
+    margin: 0;
+    min-width:28px; 
+    height:36px; 
+    line-height:36px; 
+    background:#fff; 
+    display:inline-block; 
+    font-size:12px; 
+    color:#555; 
+    text-align:center; 
+    cursor:pointer;
+    margin-bottom: -10px;
+    
+}
+.page-go-btn{ 
+    margin: 0;
+    min-width:28px; 
+    height:36px; 
+    line-height:36px; 
+    background:#fff; 
+    display:inline-block; 
+    font-size:14px; 
+    color:#2196f3; 
+    text-align:center; 
+    cursor:pointer;
+    margin-bottom: -10px;
+    
+}
+.page-go-btn:hover { 
+    background:#f7f7f7; 
+    color:#fff;
+}
+.page-left{
+    float: right;
+    height: 8%;
+    margin-top: -10px;
+    margin-right: 80px;
+}
+.page-go-btn{
+    background-color: #eee;
+}
+.page-list li:hover,.page-list li.active{ 
+    background:#eee; 
+    color:#000;
+}
+.select{
+    padding: 0;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+.query{
+    display: block;
+    width: 80px;
+    margin-left: 20px;
+    height: 26px;
+    line-height: 26px;
+    background: #03A9F4;
+    text-align: center;
+    color: #fff;
+    border-radius: 6px;
+}
+/*分页跳转结束*/
