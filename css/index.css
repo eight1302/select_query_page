@@ -7,8 +7,9 @@
 	width: 80%;
 	margin-left: 10%;
 	margin-top: 20px;
-	height: 400px;
+	height: auto;
 	border: 1px solid #eee;
+	margin-bottom: 20px;
 }
 .title{
 	padding: 0;
@@ -35,4 +36,27 @@
 .page_detail:hover{
 	background: #dc7d7d;
 	color: #fff;
+}
+.batch_delete,.all,.un_all,.reverse,.browser{
+	text-align: center;
+    width: 60%;
+    margin: auto;
+    height: 25px;
+    line-height: 25px;
+    background: #03a9f4;
+    color: #fff;
+    border-radius: 6px;
+    min-width: 50px;
+}
+.one{
+	padding: 0;
+}
+.tow{
+	padding: 0;
+	height: 25px;
+    line-height: 25px;
+    border-bottom: 1px solid #03a9f4;
+    text-align: center;
+    margin: auto;
+    margin-top: 18px;
 }

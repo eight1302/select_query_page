@@ -10,19 +10,62 @@
 <link rel="stylesheet" type="text/css" href="../css/spop.min.css">
 <body>
 	<h3 style="text-align: center;">jquery分页展+筛选条件+查询展示</h3>
-	<section class="col-md-12 col-sm-12 col-xl-12 page">
-		<select class="col-md-2 col-sm-2 col-xl-12 select" id="select_school"></select>
-		<div class="col-md-4 col-sm-4 col-xl-12">
-			<input type="text" name="" value="" id="name" class="col-md-6 col-sm-6 col-xl-6">
-			<div class="col-md-6 col-sm-6 col-xl-6 query">查询</div>
+	<section class="col-md-12 col-sm-12 col-xs-12 page">
+		<select class="col-md-2 col-sm-2 col-xs-12 select" id="select_school" style="margin:5px 0;"></select>
+		<div class="col-md-3 col-sm-3 col-xs-12" style="margin: 5px 0;">
+			<input type="text" name="" value="" id="name" class="col-md-8 col-sm-8 col-xs-8">
+			<div class="col-md-4 col-sm-4 col-xs-4 query">查询</div>
 		</div>
-		<div class="col-md-12 col-sm-12 col-xl-12 title"><!--title标题展示--></div>
-		<div class="col-md-12 col-sm-12 col-xl-12 page_info"><!--详细数据--></div>
+		<div class="col-md-5 col-sm-5 col-xs-12 one" style="margin: 5px 0;">
+			<div class="col-md-3 col-sm-3 col-xs-3 one">
+				<div class="batch_delete">批量删除</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-3 one">
+				<div class="all">全选</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-3 one">
+				<div class="un_all">取消</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-3 one">
+				<div class="reverse">返选</div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-2 col-xs-12 one" style="margin: 5px 0;">
+			<div class="browser">浏览器信息</div>
+		</div>
+		<div class="col-md-12 col-sm-12 col-xs-12 title"><!--title标题展示--></div>
+		<div class="col-md-12 col-sm-12 col-xs-12 page_info"><!--详细数据--></div>
 		<div class="order_tatal">
 			   	<div class="order_ul"></div>
 				<div class="page-data">	
 		        <div class="page-left"></div>
 	    	</div> 	
+		</div>
+		<div class="col-md-12 col-sm-12 col-xs-12 infomation" style="padding: 0;">
+			<div class="col-md-8 col-sm-8 col-xs-12 tow">
+				<label>isFirefoxVersion信息:</label><span class="isFirefoxVersion"></span>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-12 tow">
+				<label>appCodeName信息:</label><span class="appCodeName"></span>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 tow">
+				<label>appName信息:</label><span class="appName"></span>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 tow">
+				<label>appVersion信息:</label><span class="appVersion"></span>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 tow">
+				<label>platform信息:</label><span class="platform"></span>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 tow">
+				<label>product信息:</label><span class="product"></span>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 tow">
+				<label>productSub信息:</label><span class="productSub"></span>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 tow">
+				<label>vendor信息:</label><span class="vendor"></span>
+			</div>
 		</div>
 	</section>
 </body>

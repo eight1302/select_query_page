@@ -2,12 +2,13 @@
 var page = 10;
 
 //页面title（标题展示）
-var title = '<div class="col-md-2 col-sm-2 col-xl-2 id">序号</div>'+
-			'<div class="col-md-2 col-sm-2 col-xl-2 name">名字</div>'+
-			'<div class="col-md-2 col-sm-2 col-xl-2 age">年龄</div>'+
-			'<div class="col-md-2 col-sm-2 col-xl-2 school">毕业院校</div>'+
-			'<div class="col-md-2 col-sm-2 col-xl-2 professional">学习专业</div>'+
-			'<div class="col-md-2 col-sm-2 col-xl-2 operation">操作</div>';
+var title = '<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 one">选择</div>'+
+            '<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 one id">序号</div>'+
+			'<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 one name">名字</div>'+
+			'<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 one age">年龄</div>'+
+			'<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 one school">毕业院校</div>'+
+			'<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 one professional">学习专业</div>'+
+			'<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 one operation">操作</div>';
 $(".title").append(title);
 
 //分页函数
@@ -61,13 +62,16 @@ $.getJSON({
 
 //表单数据
 function dateinfo(obj){
- 	var detail ='<div class="col-md-12 col-sm-12 col-xl-12 page_detail">'+ 
-				'<div class="col-md-2 col-sm-2 col-xl-2 id">'+obj.id+'</div>'+
-				'<div class="col-md-2 col-sm-2 col-xl-2 name">'+obj.name+'</div>'+
-				'<div class="col-md-2 col-sm-2 col-xl-2 age">'+obj.age+'</div>'+
-				'<div class="col-md-2 col-sm-2 col-xl-2 school">'+obj.school+'</div>'+
-				'<div class="col-md-2 col-sm-2 col-xl-2 professional">'+obj.professional+'</div>'+
-				'<div class="col-md-2 col-sm-2 col-xl-2 delete">删除</div>'+
+ 	var detail ='<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_detail">'+ 
+                '<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 one">'+
+                    '<input type="checkbox" name="items" value="'+obj.id+'" id="item">'+
+                '</div>'+
+				'<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 one id">'+obj.id+'</div>'+
+				'<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 one name">'+obj.name+'</div>'+
+				'<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 one age">'+obj.age+'</div>'+
+				'<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 one school">'+obj.school+'</div>'+
+				'<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 one professional">'+obj.professional+'</div>'+
+				'<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 one delete">删除</div>'+
 			'</div>';
 	$(".page_info").append(detail);
 }
@@ -94,7 +98,6 @@ $(".page_info").on('click','.delete',function(){
         autoclose: 3000
     });
     $(this).parent().remove();
-    
 })
 
 var data = ["北京大学","清华大学","南开大学","北京邮电大学","东北工业大学","北京理工大学","北京交通大学","北京交通大学海滨学院"];
@@ -104,8 +107,9 @@ var data = ["北京大学","清华大学","南开大学","北京邮电大学","�
     $(".select").append(se_html);
 }); 
 
+//筛选条件
 function select(name,item){
-     var sol =[];
+    var sol =[];
     $(".page_info").empty();
     $.each(item, function(idx,obj){
         var school = obj.school;
@@ -116,7 +120,7 @@ function select(name,item){
     page_func(sol)
 }
 
-//查询条件
+//查询方法
 $(".query").on('click',function(){
     var name = $("#name").val();
     $.getJSON({  
@@ -137,18 +141,129 @@ $(".query").on('click',function(){
     });
 });
 
+//查询条件
 function query(name,item){
-    spop({
-        template: '查找的学生'+name,
-        autoclose: 5000
-    });
     var query =[];
     $(".page_info").empty();
     $.each(item, function(idx,obj){
-        var person_name = obj.name;
-        if(name == person_name){ 
+        if(name == obj.name || name == obj.id || name == obj.age || name == obj.school || name == obj.professional){ 
             query.push(item[idx]);
         }
-    }); 
+    });
+    spop({
+        template: '查询详情',
+        autoclose: 5000
+    });
     page_func(query)
 }
+
+//选择功能
+function batch(){
+    //全选
+    $(".all").click(function() {
+        $("[name=items]:checkbox").each(function() {
+            $(this).prop("checked", true);
+        })
+    });
+
+    //取消
+    $(".un_all").click(function() {
+        $("[name=items]:checkbox").each(function() {
+            $(this).prop("checked", false);
+        })
+    })
+
+
+    //反选
+    $(".reverse").click(function() {
+        $("[name=items]:checkbox").each(function() {
+            //如果当前复选框已选中，则则执行关闭
+            if ($(this).prop("checked")) {
+                $(this).prop("checked", false);
+            }
+            //否则选中 
+            else {
+                $(this).prop("checked", true);
+            }
+        });
+    })
+}
+
+batch()
+
+//批量删除
+$(".batch_delete").on("click",function(){
+    var signs = $("input[name='items']");
+    var ids = [];
+    $.each(signs,function(key,obj){
+        if(obj.checked){
+            var id = obj.value;
+            ids.push(id);
+        }
+    });
+    //删除数据
+    if(ids.length >0){
+        $.each(ids, function(idx,obj){  
+
+            if($(".page_info").find("#item").val(obj)){
+                $(".page_info").find("#item").parent().parent().remove();  
+            }else{
+                spop({
+                    template: '批量删除失败',
+                    autoclose: 3000
+                });
+            } 
+        });
+        spop({
+            template: '批量删除成功',
+            autoclose: 3000
+        }); 
+    }else{
+        spop({
+            template: '批量删除只能全选或反选,不选则不能删除!',
+            autoclose: 3000
+        });
+    }
+})
+
+//展示浏览器信息
+function getOs(){ 
+    var isFirefoxVersion = navigator.userAgent,
+        appCodeName = navigator.appCodeName,
+        appName = navigator.appName,
+        appVersion = navigator.appVersion,
+        platform = navigator.platform,
+        product =navigator.product,
+        productSub = navigator.productSub,
+        vendor =navigator.vendor;
+    var date = {
+        "isFirefoxVersion" : isFirefoxVersion,
+        "appCodeName" : appCodeName,
+        "appName" : appName,
+        "appVersion" : appVersion,
+        "platform" : platform,
+        "product" : product,
+        "productSub" : productSub,
+        "vendor" : vendor
+    }
+    return date; 
+}
+//隐藏浏览器信息
+$(".infomation").hide();
+$(".browser").on('click',function(){
+    $(".infomation").show();
+    //页面提示信息
+    var data = getOs()
+    $(".isFirefoxVersion").html(data.isFirefoxVersion);
+    $(".appCodeName").html(data.appCodeName);
+    $(".appName").html(data.appName);
+    $(".appVersion").html(data.appVersion);
+    $(".platform").html(data.platform);
+    $(".product").html(data.product);
+    $(".productSub").html(data.productSub);
+    $(".vendor").html(data.vendor);
+     spop({
+            template: '浏览器信息为：'+data.isFirefoxVersion+'!',
+            autoclose: 5000
+        });
+})
