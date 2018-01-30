@@ -49,6 +49,10 @@ $.getJSON({
        //筛选框
         $("#select_school").change(function(){
             var name = $(this).children('option:selected').val();
+            spop({
+                template: '查找的院校是'+name,
+                autoclose: 5000
+            });
             var item =e.date.date_list;
             select(name,item)
         });
@@ -85,8 +89,12 @@ $(".page_info").on('click','.delete',function(){
     var age= $(this).parent().find(".age").html();
     var school= $(this).parent().find(".school").html();
     var professional= $(this).parent().find(".professional").html();
-    alert("请确定要删除序号=="+id+",名称=="+name+",年龄=="+age+",毕业院校=="+school+",所学专业=="+professional);
+    spop({
+        template: '请确定要删除序号'+id+'名称'+name+'毕业院校'+school,
+        autoclose: 3000
+    });
     $(this).parent().remove();
+    
 })
 
 var data = ["北京大学","清华大学","南开大学","北京邮电大学","东北工业大学","北京理工大学","北京交通大学","北京交通大学海滨学院"];
@@ -130,6 +138,10 @@ $(".query").on('click',function(){
 });
 
 function query(name,item){
+    spop({
+        template: '查找的学生'+name,
+        autoclose: 5000
+    });
     var query =[];
     $(".page_info").empty();
     $.each(item, function(idx,obj){
