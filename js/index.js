@@ -146,7 +146,13 @@ function query(name,item){
     var query =[];
     $(".page_info").empty();
     $.each(item, function(idx,obj){
-        if(name == obj.name || name == obj.id || name == obj.age || name == obj.school || name == obj.professional){ 
+        if(name == ''){
+	   spop({
+		template: '请输入查询条件!',
+		autoclose: 5000
+	    });
+	    return false;
+        }else(name == obj.name || name == obj.id || name == obj.age || name == obj.school || name == obj.professional){ 
             query.push(item[idx]);
         }
     });
