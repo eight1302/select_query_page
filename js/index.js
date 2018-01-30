@@ -123,6 +123,13 @@ function select(name,item){
 //查询方法
 $(".query").on('click',function(){
     var name = $("#name").val();
+    if(name == ""){
+        spop({
+            template: '请输入查询信息!',
+            autoclose: 5000
+        });
+        return false;
+    }
     $.getJSON({  
         type: "GET",
         url:"../js/date.json",  
@@ -143,27 +150,18 @@ $(".query").on('click',function(){
 
 //查询条件
 function query(name,item){
-    if(name != ""){
-        var query =[];
-        $(".page_info").empty();
-        $.each(item, function(idx,obj){
-            if(name == obj.name || name == obj.id || name == obj.age || name == obj.school || name == obj.professional){ 
-                query.push(item[idx]);
-            }
-        });
-        spop({
-            template: '查询详情',
-            autoclose: 5000
-        });
-        page_func(query)
-    }else{
-         spop({
-            template: '请输入查询信息!',
-            autoclose: 5000
-        });
-	return false;    
-    }
-   
+    var query =[];
+    $(".page_info").empty();
+    $.each(item, function(idx,obj){
+        if(name == obj.name || name == obj.id || name == obj.age || name == obj.school || name == obj.professional){ 
+            query.push(item[idx]);
+        }
+    });
+    spop({
+        template: '查询详情',
+        autoclose: 5000
+    });
+    page_func(query)
 }
 
 //选择功能
